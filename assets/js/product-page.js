@@ -100,19 +100,40 @@ function renderGallery(product) {
 
 async function loadProduct(id = currentProductId, updateHistory = false) {
   if (!id || !/^\d+$/.test(id)) throw new Error('A valid product was not specified.');
-  const response = await fetch('/api/products?id=' + encodeURIComponent(id), { headers:{Accept:'application/json'}, cache:'no-store' });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok || !payload.success) throw new Error(payload.error || 'Unable to load product.');
-  const products = Array.isArray(payload.data?.products) ? payload.data.products : [];
-  const product = products.find((item) => String(item.id) === String(id));
+
+  let product = null;
+  let isDemo = false;
+
+  try {
+    const response = await fetch('/api/products?id=' + encodeURIComponent(id), { headers:{Accept:'application/json'}, cache:'no-store' });
+    const payload = await response.json().catch(() => ({}));
+    if (response.ok && payload.success) {
+      const products = Array.isArray(payload.data?.products) ? payload.data.products : [];
+      product = products.find((item) => String(item.id) === String(id)) || null;
+    }
+  } catch {}
+
+  if (!product) {
+    const demo = window.COURAGEOUS_DEMO_CATALOGUE;
+    product = demo?.products?.find((item) => String(item.id) === String(id)) || null;
+    if (product) {
+      isDemo = true;
+      const related = demo.products
+        .filter((item) => Number(item.category_id) === Number(product.category_id) && String(item.id) !== String(product.id))
+        .slice(0, 4);
+      product = { ...product, related_products: related };
+    }
+  }
+
   if (!product) throw new Error('Product not found.');
+
   currentProductId = String(product.id);
   loadedProduct = product;
   titleElement.textContent = product.name;
   categoryElement.textContent = product.category_name || 'Uncategorized';
-  priceElement.textContent = formatPrice(product);
-  descriptionElement.textContent = product.description || 'No description available.';
-  statusElement.textContent = product.track_stock && Number(product.stock_quantity) <= 0 ? 'Out of stock' : 'Available';
+  priceElement.innerHTML = formatPrice(product);
+  descriptionElement.textContent = product.description || 'A beautiful everyday essential from the Courageous Cosmetics demo collection.';
+  statusElement.textContent = product.track_stock && Number(product.stock_quantity) <= 0 ? 'Out of stock' : (isDemo ? 'Demo product · available for preview' : 'Available');
   if (attributesElement) {
     const attributes = Array.isArray(product.attributes) ? product.attributes : [];
     attributesElement.innerHTML = attributes.length
@@ -130,7 +151,7 @@ async function loadProduct(id = currentProductId, updateHistory = false) {
   renderGallery(product);
   renderRelatedProducts(product);
   renderGroupOptions(product);
-  document.title = product.name + ' | Clothing Store';
+  document.title = product.name + ' | Courageous Cosmetics';
   if (updateHistory) window.history.pushState({ productId: product.id }, '', 'product.html?id=' + encodeURIComponent(product.id));
 }
 
