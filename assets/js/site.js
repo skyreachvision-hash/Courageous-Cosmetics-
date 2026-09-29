@@ -550,3 +550,30 @@ const loadPublicInformationLinks = async () => {
   }
 };
 loadPublicInformationLinks();
+
+
+/* Frontend demo catalogue for visual development when no catalogue API is connected. */
+window.COURAGEOUS_DEMO_CATALOGUE = {
+  categories: [
+    { id: 101, name: 'Makeup', is_enabled: 1, is_main_category: 1, parent_id: null, sort_order: 1 },
+    { id: 102, name: 'Skincare', is_enabled: 1, is_main_category: 1, parent_id: null, sort_order: 2 },
+    { id: 103, name: 'Fragrance', is_enabled: 1, is_main_category: 1, parent_id: null, sort_order: 3 },
+    { id: 104, name: 'Beauty Tools', is_enabled: 1, is_main_category: 1, parent_id: null, sort_order: 4 },
+    { id: 201, name: 'Complexion', is_enabled: 1, is_main_category: 0, parent_id: 101, sort_order: 1, showcase_image_url: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=85' },
+    { id: 202, name: 'Lips', is_enabled: 1, is_main_category: 0, parent_id: 101, sort_order: 2, showcase_image_url: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=85' },
+    { id: 203, name: 'Face Care', is_enabled: 1, is_main_category: 0, parent_id: 102, sort_order: 1, showcase_image_url: 'https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=900&q=85' },
+    { id: 204, name: 'Body Care', is_enabled: 1, is_main_category: 0, parent_id: 102, sort_order: 2, showcase_image_url: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=85' },
+    { id: 205, name: 'Eau de Parfum', is_enabled: 1, is_main_category: 0, parent_id: 103, sort_order: 1, showcase_image_url: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=85' },
+    { id: 206, name: 'Brushes', is_enabled: 1, is_main_category: 0, parent_id: 104, sort_order: 1, showcase_image_url: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=85' }
+  ],
+  products: [
+    { id: 9001, name: 'Velvet Skin Foundation', sku: 'DEMO-FOUNDATION', category_id: 201, category_name: 'Complexion', price: 249, effective_price: 249, currency: 'ZAR', status: 'active', is_new: 1, promotion_enabled: 0, sort_order: 1, images: [{ is_primary: 1, image_url: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=88' }] },
+    { id: 9002, name: 'Rose Silk Lip Color', sku: 'DEMO-LIP', category_id: 202, category_name: 'Lips', price: 179, effective_price: 159, currency: 'ZAR', status: 'active', is_new: 1, promotion_enabled: 1, sort_order: 2, images: [{ is_primary: 1, image_url: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=1000&q=88' }] },
+    { id: 9003, name: 'Cloud Cleanse Facial Wash', sku: 'DEMO-CLEANSER', category_id: 203, category_name: 'Face Care', price: 199, effective_price: 199, currency: 'ZAR', status: 'active', is_new: 1, promotion_enabled: 0, sort_order: 3, images: [{ is_primary: 1, image_url: 'https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=1000&q=88' }] },
+    { id: 9004, name: 'Silk Body Butter', sku: 'DEMO-BODY', category_id: 204, category_name: 'Body Care', price: 229, effective_price: 199, currency: 'ZAR', status: 'active', is_new: 0, promotion_enabled: 1, sort_order: 4, images: [{ is_primary: 1, image_url: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1000&q=88' }] },
+    { id: 9005, name: 'Noir Bloom Eau de Parfum', sku: 'DEMO-PERFUME', category_id: 205, category_name: 'Eau de Parfum', price: 599, effective_price: 599, currency: 'ZAR', status: 'active', is_new: 1, promotion_enabled: 0, sort_order: 5, images: [{ is_primary: 1, image_url: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1000&q=88' }] },
+    { id: 9006, name: 'Everyday Glow Brush Set', sku: 'DEMO-BRUSHES', category_id: 206, category_name: 'Brushes', price: 289, effective_price: 289, currency: 'ZAR', status: 'active', is_new: 0, promotion_enabled: 0, sort_order: 6, images: [{ is_primary: 1, image_url: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=88' }] },
+    { id: 9007, name: 'Soft Focus Blush', sku: 'DEMO-BLUSH', category_id: 201, category_name: 'Complexion', price: 189, effective_price: 169, currency: 'ZAR', status: 'active', is_new: 1, promotion_enabled: 1, sort_order: 7, images: [{ is_primary: 1, image_url: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1000&q=88' }] },
+    { id: 9008, name: 'Satin Shine Lip Oil', sku: 'DEMO-LIPOIL', category_id: 202, category_name: 'Lips', price: 159, effective_price: 159, currency: 'ZAR', status: 'active', is_new: 0, promotion_enabled: 0, sort_order: 8, images: [{ is_primary: 1, image_url: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=1000&q=88' }] }
+  ]
+};
