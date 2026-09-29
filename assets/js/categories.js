@@ -117,20 +117,24 @@ async function loadMainCategoriesWithProducts() {
         ? productPayload.data
         : [];
 
-    renderMerchandisingSections(products);
-    renderSubcategoryShowcase(categories);
+    const catalogue = products.length ? { categories, products } : (window.COURAGEOUS_DEMO_CATALOGUE || { categories, products });
+    const displayCategories = catalogue.categories || categories;
+    const displayProducts = catalogue.products || products;
 
-    const mainCategories = categories
+    renderMerchandisingSections(displayProducts);
+    renderSubcategoryShowcase(displayCategories);
+
+    const mainCategories = displayCategories
       .filter((category) => Number(category.is_enabled) === 1 && Number(category.is_main_category) === 1)
       .sort(sortByStoreOrder);
 
     const sections = mainCategories.map((mainCategory) => {
-      const subcategories = categories
+      const subcategories = displayCategories
         .filter((category) => Number(category.is_enabled) === 1 && Number(category.parent_id) === Number(mainCategory.id) && Number(category.is_main_category) !== 1)
         .sort(sortByStoreOrder);
 
       const subcategoryBlocks = subcategories.map((subcategory) => {
-        const subcategoryProducts = products
+        const subcategoryProducts = displayProducts
           .filter((product) => Number(product.category_id) === Number(subcategory.id) && String(product.status || 'active').toLowerCase() === 'active')
           .slice(0, 4);
 
@@ -156,6 +160,32 @@ async function loadMainCategoriesWithProducts() {
       ? sections.join('')
       : '<p class="muted">No enabled main categories are currently configured.</p>';
   } catch (error) {
+    const demo = window.COURAGEOUS_DEMO_CATALOGUE;
+    if (demo?.categories?.length && demo?.products?.length) {
+      renderMerchandisingSections(demo.products);
+      renderSubcategoryShowcase(demo.categories);
+      const mainCategories = demo.categories.filter((category) => Number(category.is_enabled) === 1 && Number(category.is_main_category) === 1).sort(sortByStoreOrder);
+      categorySections.innerHTML = mainCategories.map((mainCategory) => {
+        const subcategories = demo.categories.filter((category) => Number(category.is_enabled) === 1 && Number(category.parent_id) === Number(mainCategory.id) && Number(category.is_main_category) !== 1).sort(sortByStoreOrder);
+        return `<section class="category-main-section" aria-labelledby="main-category-${escapeHtml(mainCategory.id)}">
+          <a class="section-heading category-link-card" href="category.html?id=${encodeURIComponent(mainCategory.id)}">
+            <div><p class="eyebrow">Main category</p><h2 id="main-category-${escapeHtml(mainCategory.id)}">${escapeHtml(mainCategory.name)}</h2></div>
+          </a>
+          ${subcategories.map((subcategory) => {
+            const items = demo.products.filter((product) => Number(product.category_id) === Number(subcategory.id));
+            return `<div class="category-product-section">
+              <a class="section-heading category-link-card" href="category.html?id=${encodeURIComponent(mainCategory.id)}&subcategory=${encodeURIComponent(subcategory.id)}">
+                <div><p class="eyebrow">Subcategory</p><h3>${escapeHtml(subcategory.name)}</h3></div>
+              </a>
+              <div class="product-grid">${items.slice(0, 4).map(renderProductCard).join('')}</div>
+            </div>`;
+          }).join('')}
+        </section>`;
+      }).join('');
+      if (categoryStatus) categoryStatus.textContent = 'Showing temporary demo products for storefront design.';
+      if (subcategoryStatus) subcategoryStatus.textContent = 'Demo catalogue';
+      return;
+    }
     categorySections.innerHTML = '<p class="muted">Store categories are temporarily unavailable.</p>';
     if (categoryStatus) categoryStatus.textContent = error?.message || 'Unable to load categories.';
     if (subcategoryStatus) subcategoryStatus.textContent = error?.message || 'Unable to load categories.';
