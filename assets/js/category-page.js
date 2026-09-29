@@ -114,12 +114,16 @@ async function loadCategoryPage() {
     if (!categoryResponse.ok || !categoryPayload.success) throw new Error(categoryPayload.error || 'Unable to load categories.');
     if (!productResponse.ok || !productPayload.success) throw new Error(productPayload.error || 'Unable to load products.');
 
-    const categories = Array.isArray(categoryPayload.data) ? categoryPayload.data : [];
-    const products = Array.isArray(productPayload.data?.products)
+    const apiCategories = Array.isArray(categoryPayload.data) ? categoryPayload.data : [];
+    const apiProducts = Array.isArray(productPayload.data?.products)
       ? productPayload.data.products
       : Array.isArray(productPayload.data)
         ? productPayload.data
         : [];
+    const demo = window.COURAGEOUS_DEMO_CATALOGUE;
+    const useDemo = !apiCategories.length || !apiProducts.length;
+    const categories = useDemo && demo?.categories?.length ? demo.categories : apiCategories;
+    const products = useDemo && demo?.products?.length ? demo.products : apiProducts;
 
     const mainCategory = categories.find((category) =>
       Number(category.id) === Number(categoryId) &&
@@ -146,11 +150,37 @@ async function loadCategoryPage() {
     document.querySelector('[data-category-meta-description]')?.setAttribute('content', `Shop ${mainCategory.name} and browse its subcategories.`);
     if (titleElement) titleElement.textContent = mainCategory.name;
     if (introElement) introElement.textContent = `Browse all ${mainCategory.name} pieces or filter by subcategory.`;
-    if (statusElement) statusElement.textContent = '';
+    if (statusElement) statusElement.textContent = useDemo ? 'Showing temporary demo products for storefront design.' : '';
 
     renderFilters();
     renderCatalogue();
   } catch (error) {
+    const demo = window.COURAGEOUS_DEMO_CATALOGUE;
+    if (demo?.categories?.length && demo?.products?.length) {
+      const mainCategory = demo.categories.find((category) =>
+        Number(category.id) === Number(categoryId) &&
+        Number(category.is_enabled) === 1 &&
+        Number(category.is_main_category) === 1
+      );
+      if (mainCategory) {
+        const subcategories = demo.categories
+          .filter((category) => Number(category.is_enabled) === 1 && Number(category.parent_id) === Number(mainCategory.id) && Number(category.is_main_category) !== 1)
+          .sort(sortByStoreOrder);
+        const subcategoryIds = new Set(subcategories.map((subcategory) => Number(subcategory.id)));
+        state = {
+          mainCategory,
+          subcategories,
+          products: demo.products.filter((product) => String(product.status || 'active').toLowerCase() === 'active' && subcategoryIds.has(Number(product.category_id)))
+        };
+        document.title = mainCategory.name + ' | Courageous Cosmetics';
+        if (titleElement) titleElement.textContent = mainCategory.name;
+        if (introElement) introElement.textContent = 'Browse all ' + mainCategory.name + ' pieces or filter by subcategory.';
+        if (statusElement) statusElement.textContent = 'Showing temporary demo products for storefront design.';
+        renderFilters();
+        renderCatalogue();
+        return;
+      }
+    }
     if (titleElement) titleElement.textContent = 'Category unavailable';
     if (statusElement) statusElement.textContent = error?.message || 'Unable to load this category.';
     if (catalogueElement) catalogueElement.innerHTML = '';
