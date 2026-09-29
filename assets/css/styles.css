@@ -872,3 +872,51 @@ body.customer-sticky-chat-open{overflow:hidden}
     aspect-ratio: 1 / 1;
   }
 }
+
+
+/* Courageous Cosmetics storefront visual theme */
+:root {
+  --color-brand-primary: #241b1f;
+  --color-brand-primary-hover: #120d10;
+  --color-brand-secondary: #b88972;
+  --color-brand-secondary-hover: #9f6e59;
+  --color-brand-secondary-soft: #f5e9e3;
+  --color-background: #fbf8f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4eeeb;
+  --color-surface-strong: #e9ddd7;
+  --color-text: #241b1f;
+  --color-text-muted: #756b6d;
+  --color-text-subtle: #9b9092;
+  --color-border: #e3d8d4;
+  --font-display: Georgia, 'Times New Roman', serif;
+}
+.site-header { background: rgb(251 248 246 / .94); border-bottom-color: rgb(36 27 31 / .08); }
+.brand { letter-spacing: .16em; }
+.site-nav { gap: var(--space-5); }
+.site-nav a:hover, .text-link:hover, .footer-column a:hover { color: var(--color-brand-secondary); }
+.hero { padding: clamp(5rem, 10vw, 8rem) 0; background: linear-gradient(120deg, #241b1f 0%, #3a292e 55%, #21171b 100%); }
+.hero-grid { grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr); gap: clamp(2rem, 6vw, 5rem); }
+.hero h1 { font-size: clamp(3.2rem, 7vw, 6rem); letter-spacing: -.055em; }
+.hero-art { min-height: 520px; background: radial-gradient(circle at 30% 25%, #ead3c8 0, transparent 34%), linear-gradient(145deg, #c89f8c, #805b60 58%, #3d2930); border-radius: 1.5rem; box-shadow: 0 24px 60px rgb(0 0 0 / .22); }
+.art-title { font-size: clamp(4.5rem, 10vw, 8.5rem); }
+.button-primary { background: var(--color-brand-secondary); box-shadow: 0 10px 26px rgb(184 137 114 / .22); }
+.button-primary:hover { background: var(--color-brand-secondary-hover); }
+.section-heading { border-color: var(--color-border); border-radius: 1.5rem; background: linear-gradient(135deg, #fff 0%, #f6efec 100%); box-shadow: 0 16px 40px rgb(36 27 31 / .06); }
+.category-card { border-color: var(--color-border); border-radius: 1rem; }
+.category-card:hover { border-color: var(--color-brand-secondary); }
+.category-card-large { background: var(--color-brand-primary); }
+.product-card:hover { transform: translateY(-5px); }
+.product-image { border-radius: 1.15rem; box-shadow: 0 16px 38px rgb(36 27 31 / .08); }
+.product-info h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; }
+.price { color: var(--color-brand-primary); }
+.footer { background: #241b1f; color: #f7efec; }
+@media (max-width:700px) {
+  .hero { padding: 4.25rem 0 4.75rem; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-art { min-height: 360px; }
+  .hero h1 { font-size: clamp(2.75rem, 13vw, 4.2rem); }
+  .section { padding-block: 3.75rem; }
+  .section-heading { padding: var(--space-4); border-radius: 1.15rem; }
+  .product-image { border-radius: 1rem; }
+}
