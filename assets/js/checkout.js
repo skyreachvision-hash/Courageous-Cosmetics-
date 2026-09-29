@@ -8,6 +8,30 @@ const formatMoney = (value, currency) => `${String(currency || 'ZAR').toUpperCas
 
 let shippingMethods = [];
 let cart = [];
+let demoCheckoutMode = false;
+
+const isDemoCart = (items) => Array.isArray(items) && items.length > 0 && items.every((item) => Number(item.product_id) >= 9000);
+
+const loadDemoShippingMethods = () => {
+  shippingMethods = [
+    {
+      id: 90001,
+      name: 'Local delivery · Demo',
+      provider_type: 'local',
+      mode: 'demo',
+      is_enabled: 1,
+      options: [{ id: 900011, name: 'Standard local delivery', price: 50, is_enabled: 1 }]
+    },
+    {
+      id: 90002,
+      name: 'Courier delivery · Demo',
+      provider_type: 'courier',
+      mode: 'demo',
+      is_enabled: 1,
+      options: [{ id: 900021, name: 'Standard courier', price: 85, is_enabled: 1 }]
+    }
+  ];
+};
 
 async function loadShippingMethods() {
   const response = await fetch('/api/shipping', { headers: { Accept: 'application/json' }, cache: 'no-store' });
@@ -263,6 +287,28 @@ document.addEventListener('submit', async (event) => {
   notice.textContent = 'Saving your customer details…';
 
   try {
+    if (demoCheckoutMode) {
+      sessionStorage.setItem('courageous-cosmetics-demo-order', JSON.stringify({
+        items: cart,
+        customer: Object.fromEntries(new FormData(form).entries()),
+        shipping_method: method.name,
+        shipping_option: option.name,
+        shipping_fee: Number(option.price || 0),
+        created_at: new Date().toISOString()
+      }));
+      checkoutPageElement.innerHTML = `
+        <div class="checkout-empty">
+          <p class="eyebrow">Demo checkout complete</p>
+          <h2>Your test order is ready</h2>
+          <p class="muted">This is a frontend-only preview. No real customer, shipping or payment data was sent anywhere.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="index.html">Continue shopping</a>
+            <a class="button button-ghost" href="cart.html">View cart</a>
+          </div>
+        </div>`;
+      return;
+    }
+
     await saveCustomerProfile(form);
     const details = Object.fromEntries(new FormData(form).entries());
     details.shipping_method_name = method.name;
@@ -302,6 +348,14 @@ async function getCustomerUser() {
 }
 
 async function init() {
+  cart = typeof readCart === 'function' ? readCart() : [];
+  if (isDemoCart(cart)) {
+    demoCheckoutMode = true;
+    loadDemoShippingMethods();
+    renderCheckout();
+    return;
+  }
+
   const user = await getCustomerUser();
   if (!user) {
     const currentPath = window.location.pathname.endsWith('/checkout.html') ? 'checkout' : 'checkout';
@@ -309,7 +363,6 @@ async function init() {
     return;
   }
 
-  cart = typeof readCart === 'function' ? readCart() : [];
   if (!cart.length) {
     renderCheckout();
     return;
