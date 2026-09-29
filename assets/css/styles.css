@@ -1591,17 +1591,17 @@ body {
 }
 
 
-/* Courageous Cosmetics — gold-forward brand finish */
+/* Courageous Cosmetics — white-led brand finish with gold accents */
 .site-header {
-  background: #c9a227;
-  border-bottom-color: #a88416;
+  background: #ffffff;
+  border-bottom-color: #c9a227;
 }
 .site-nav a:hover {
-  background: #000000;
-  color: #ffffff;
+  background: #c9a227;
+  color: #000000;
 }
 .hero {
-  background: linear-gradient(135deg, #c9a227 0%, #e3c75b 55%, #b88e16 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 58%, #f3e7b8 100%);
 }
 .hero h1,
 .hero .hero-text,
@@ -1609,40 +1609,44 @@ body {
 .hero-note {
   color: #000000;
 }
+.hero-copy .eyebrow {
+  color: #c9a227;
+}
 .hero-text-link {
   color: #000000;
-  border-bottom-color: rgba(0,0,0,.45);
+  border-bottom-color: rgba(201,162,39,.55);
 }
 .hero-text-link:hover {
   color: #000000;
-  border-color: #000000;
+  border-color: #c9a227;
 }
 .hero-art {
-  border-color: rgba(255,255,255,.5);
+  border-color: #c9a227;
   background:
-    radial-gradient(circle at 30% 22%, rgba(255,255,255,.16), transparent 20%),
+    radial-gradient(circle at 30% 22%, rgba(201,162,39,.35), transparent 20%),
     linear-gradient(150deg, #000000 0%, #171717 55%, #000000 100%);
 }
 .category-section {
-  background: linear-gradient(180deg, #f3e7b8 0%, #ffffff 78%);
+  background: linear-gradient(180deg, #c9a227 0%, #f3e7b8 72%, #ffffff 100%);
 }
 .section-heading {
   border-bottom-color: #c9a227;
 }
 .category-card {
-  border-color: #d8c27a;
+  border-color: #c9a227;
 }
 .category-card:hover {
-  border-color: #c9a227;
+  border-color: #a88416;
   box-shadow: 0 18px 42px rgba(201,162,39,.22);
 }
 .category-card-large {
-  background: #c9a227;
+  background: #ffffff;
   color: #000000;
+  border-color: #c9a227;
 }
 #new-arrivals.section,
 #promotions.section {
-  background: #fffdf5;
+  background: #ffffff;
 }
 #new-arrivals.section::before,
 #promotions.section::before,
@@ -1650,8 +1654,8 @@ body {
   background: #c9a227;
 }
 .product-image {
-  border-color: #d8c27a;
-  background: linear-gradient(145deg, #ffffff 0%, #f3e7b8 100%);
+  border-color: #c9a227;
+  background: linear-gradient(145deg, #c9a227 0%, #f3e7b8 58%, #ffffff 100%);
 }
 .product-badge {
   background: #c9a227;
