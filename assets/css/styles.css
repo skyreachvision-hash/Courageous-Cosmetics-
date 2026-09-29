@@ -1591,6 +1591,31 @@ body {
 }
 
 
+
+/* Courageous Cosmetics — editorial beauty hero image */
+.hero {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.88) 38%, rgba(255,255,255,.28) 72%, rgba(255,255,255,.12) 100%),
+    url("https://images.pexels.com/photos/11924085/pexels-photo-11924085.jpeg?cs=srgb&dl=pexels-walaa-dag-218036224-11924085.jpg&fm=jpg") center right / cover no-repeat;
+}
+.hero-art {
+  background:
+    linear-gradient(150deg, rgba(0,0,0,.88), rgba(23,23,23,.72)),
+    url("https://images.pexels.com/photos/11924085/pexels-photo-11924085.jpeg?cs=srgb&dl=pexels-walaa-dag-218036224-11924085.jpg&fm=jpg") center / cover no-repeat;
+  box-shadow: 0 30px 80px rgba(0,0,0,.18);
+}
+@media (max-width: 900px) {
+  .hero {
+    background-position: 68% center;
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.82) 52%, rgba(255,255,255,.38) 100%),
+      url("https://images.pexels.com/photos/11924085/pexels-photo-11924085.jpeg?cs=srgb&dl=pexels-walaa-dag-218036224-11924085.jpg&fm=jpg") center / cover no-repeat;
+  }
+}
 /* Courageous Cosmetics — white-led brand finish with gold accents */
 .site-header {
   background: #ffffff;
