@@ -1316,3 +1316,43 @@ body {
     gap: .45rem;
   }
 }
+
+/* Courageous Cosmetics storefront composition refinement */
+.hero {
+  padding: clamp(4.5rem, 8vw, 7.5rem) 0;
+  background:
+    radial-gradient(circle at 78% 18%, rgb(184 137 114 / .2), transparent 30%),
+    linear-gradient(135deg, #241b1f 0%, #302126 58%, #1b1518 100%);
+}
+.hero-grid { grid-template-columns: minmax(0, .92fr) minmax(320px, .82fr); gap: clamp(2rem, 6vw, 6rem); }
+.hero-copy { position: relative; z-index: 1; }
+.hero h1 { max-width: 700px; font-size: clamp(3.4rem, 7.4vw, 6.5rem); }
+.hero-text { max-width: 560px; }
+.hero-actions { align-items: center; }
+.hero-text-link { color: rgb(255 255 255 / .78); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); border-bottom: 1px solid rgb(255 255 255 / .35); padding-bottom: .2rem; }
+.hero-text-link:hover { color: #fff; border-color: #fff; }
+.hero-art {
+  min-height: clamp(390px, 48vw, 600px);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid rgb(255 255 255 / .14);
+  border-radius: 1.6rem;
+  background:
+    radial-gradient(circle at 30% 22%, rgb(255 255 255 / .22), transparent 20%),
+    radial-gradient(circle at 72% 72%, rgb(255 255 255 / .13), transparent 24%),
+    linear-gradient(150deg, #c99a84 0%, #9b665c 45%, #4d3038 100%);
+  box-shadow: 0 30px 80px rgb(0 0 0 / .22);
+}
+.hero-art::before { position: absolute; inset: 12% 16%; border: 1px solid rgb(255 255 255 / .24); border-radius: 48% 52% 46% 54%; content: ''; transform: rotate(-8deg); }
+.hero-art::after { right: -10%; bottom: -18%; width: 65%; height: 58%; background: rgb(255 255 255 / .12); filter: blur(2px); }
+.art-title { font-size: clamp(4.2rem, 9vw, 8rem); letter-spacing: -.1em; text-align: center; text-shadow: 0 12px 32px rgb(0 0 0 / .14); }
+.art-label, .art-corner { letter-spacing: .18em; }
+#new-arrivals.section, #promotions.section { background: #fbf8f6; }
+#new-arrivals .section-heading, #promotions .section-heading { border-bottom: 1px solid rgb(77 48 56 / .14); background: transparent; padding-inline: 0; }
+@media (max-width: 760px) {
+  .hero { padding: 3.75rem 0 4rem; }
+  .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .hero h1 { font-size: clamp(2.9rem, 14vw, 4.5rem); }
+  .hero-art { min-height: 330px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .hero-text-link { margin-top: .2rem; }
+}
