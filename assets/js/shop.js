@@ -149,12 +149,23 @@ async function loadShopAll() {
       }),
       loadProducts()
     ]);
-    state = { categories: categoryResponse, products };
+    state = products.length
+      ? { categories: categoryResponse, products }
+      : (window.COURAGEOUS_DEMO_CATALOGUE || { categories: categoryResponse, products });
     populateMainCategories();
     populateSubcategories();
     renderCatalogue();
     if (statusElement) statusElement.textContent = 'Showing the current active catalogue.';
   } catch (error) {
+    const demo = window.COURAGEOUS_DEMO_CATALOGUE;
+    if (demo?.categories?.length && demo?.products?.length) {
+      state = demo;
+      populateMainCategories();
+      populateSubcategories();
+      renderCatalogue();
+      if (statusElement) statusElement.textContent = 'Showing temporary demo products for storefront design.';
+      return;
+    }
     if (statusElement) statusElement.textContent = error?.message || 'Unable to load the catalogue.';
     if (catalogueElement) catalogueElement.innerHTML = '<p class="muted">The catalogue is temporarily unavailable.</p>';
   }
