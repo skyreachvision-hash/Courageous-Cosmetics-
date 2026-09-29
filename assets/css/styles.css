@@ -2027,3 +2027,101 @@ body {
     margin-top: 4rem;
   }
 }
+
+
+/* Courageous Cosmetics — simplify the homepage composition */
+.hero {
+  min-height: 650px;
+  padding-block: 5rem;
+}
+.hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, .78fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+}
+.hero-art {
+  min-height: 500px;
+}
+#new-arrivals.section,
+#promotions.section {
+  padding-block: 4rem;
+}
+#new-arrivals .section-heading,
+#promotions .section-heading {
+  margin-bottom: 1.5rem;
+}
+#new-arrivals .product-grid,
+#promotions .product-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.category-section {
+  padding-block: 5rem;
+  background: #fff;
+}
+.category-section > .container {
+  max-width: 1080px;
+}
+.category-section .section-heading {
+  background: #fff;
+}
+.subcategory-showcase {
+  justify-content: center;
+  overflow-x: visible;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  margin: 0 auto 3.5rem;
+}
+.subcategory-showcase-card {
+  flex: 0 0 116px;
+}
+.subcategory-showcase-image {
+  width: 116px;
+  height: 116px;
+}
+.category-main-section {
+  margin-top: 4rem;
+  padding-top: 1rem;
+}
+.category-main-section > .section-heading {
+  margin-bottom: 1.75rem;
+}
+.category-product-section {
+  margin-top: 2.75rem;
+}
+.site-footer {
+  margin-top: 0;
+  padding-top: 4rem;
+}
+.footer-grid {
+  grid-template-columns: 2fr repeat(4, 1fr);
+}
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    padding-block: 4.5rem;
+  }
+  #new-arrivals .product-grid,
+  #promotions .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .subcategory-showcase {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    padding-block: 3.5rem 4rem;
+  }
+  .hero-art {
+    min-height: 330px;
+  }
+  #new-arrivals.section,
+  #promotions.section,
+  .category-section {
+    padding-block: 3.5rem;
+  }
+  .subcategory-showcase {
+    margin-bottom: 2.5rem;
+  }
+}
