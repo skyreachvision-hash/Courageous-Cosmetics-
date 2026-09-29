@@ -128,36 +128,27 @@ async function loadMainCategoriesWithProducts() {
       .filter((category) => Number(category.is_enabled) === 1 && Number(category.is_main_category) === 1)
       .sort(sortByStoreOrder);
 
-    const sections = mainCategories.map((mainCategory) => {
-      const subcategories = displayCategories
-        .filter((category) => Number(category.is_enabled) === 1 && Number(category.parent_id) === Number(mainCategory.id) && Number(category.is_main_category) !== 1)
-        .sort(sortByStoreOrder);
+    const categoryTiles = mainCategories.map((mainCategory) => {
+      const subcategoryCount = displayCategories.filter(
+        (category) =>
+          Number(category.is_enabled) === 1 &&
+          Number(category.parent_id) === Number(mainCategory.id) &&
+          Number(category.is_main_category) !== 1
+      ).length;
 
-      const subcategoryBlocks = subcategories.map((subcategory) => {
-        const subcategoryProducts = displayProducts
-          .filter((product) => Number(product.category_id) === Number(subcategory.id) && String(product.status || 'active').toLowerCase() === 'active')
-          .slice(0, 4);
+      return `<a class="homepage-category-tile" href="category.html?id=${encodeURIComponent(mainCategory.id)}">
+        <span class="homepage-category-number">${String(mainCategory.sort_order ?? '').padStart(2, '0')}</span>
+        <span class="homepage-category-copy">
+          <span class="eyebrow">Collection</span>
+          <strong>${escapeHtml(mainCategory.name)}</strong>
+          <small>${subcategoryCount} ${subcategoryCount === 1 ? 'collection' : 'collections'}</small>
+        </span>
+        <span class="homepage-category-arrow" aria-hidden="true">↗</span>
+      </a>`;
+    }).join('');
 
-        return `<div class="category-product-section">
-          <a class="section-heading category-link-card" href="category.html?id=${encodeURIComponent(mainCategory.id)}&subcategory=${encodeURIComponent(subcategory.id)}" aria-label="Shop ${escapeHtml(subcategory.name)}">
-            <div><p class="eyebrow">Subcategory</p><h3>${escapeHtml(subcategory.name)}</h3></div>
-          </a>
-          ${subcategoryProducts.length
-            ? `<div class="product-grid">${subcategoryProducts.map(renderProductCard).join('')}</div>`
-            : '<p class="muted">No products are available in this subcategory yet.</p>'}
-        </div>`;
-      }).join('');
-
-      return `<section class="category-main-section" aria-labelledby="main-category-${escapeHtml(mainCategory.id)}">
-        <a class="section-heading category-link-card" href="category.html?id=${encodeURIComponent(mainCategory.id)}" aria-labelledby="main-category-${escapeHtml(mainCategory.id)}">
-          <div><p class="eyebrow">Main category</p><h2 id="main-category-${escapeHtml(mainCategory.id)}">${escapeHtml(mainCategory.name)}</h2></div>
-        </a>
-        ${subcategoryBlocks || '<p class="muted">No subcategories are available in this section yet.</p>'}
-      </section>`;
-    });
-
-    categorySections.innerHTML = sections.length
-      ? sections.join('')
+    categorySections.innerHTML = categoryTiles
+      ? `<div class="homepage-category-grid">${categoryTiles}</div>`
       : '<p class="muted">No enabled main categories are currently configured.</p>';
   } catch (error) {
     const demo = window.COURAGEOUS_DEMO_CATALOGUE;
