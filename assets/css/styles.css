@@ -1003,18 +1003,6 @@ body {
   margin-bottom: 2rem;
 }
 
-.hero .container::after {
-  content: "";
-  display: block;
-  min-height: clamp(340px, 42vw, 560px);
-  border-radius: 2rem;
-  background:
-    radial-gradient(circle at 30% 24%, rgba(255,255,255,.58) 0 4%, transparent 5%),
-    radial-gradient(circle at 68% 68%, rgba(255,255,255,.22) 0 18%, transparent 19%),
-    linear-gradient(145deg, #f0dfd8 0%, #c9a497 42%, #765861 100%);
-  box-shadow: 0 28px 70px rgba(0,0,0,.25);
-  transform: rotate(1.2deg);
-}
 
 .hero-actions .button-primary {
   min-height: 50px;
