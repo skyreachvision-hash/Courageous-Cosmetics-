@@ -128,20 +128,27 @@ async function loadMainCategoriesWithProducts() {
       .filter((category) => Number(category.is_enabled) === 1 && Number(category.is_main_category) === 1)
       .sort(sortByStoreOrder);
 
-    const categoryTiles = mainCategories.map((mainCategory) => {
-      const subcategoryCount = displayCategories.filter(
-        (category) =>
+    const categoryTiles = mainCategories.map((mainCategory, index) => {
+      const children = displayCategories
+        .filter((category) =>
           Number(category.is_enabled) === 1 &&
           Number(category.parent_id) === Number(mainCategory.id) &&
           Number(category.is_main_category) !== 1
-      ).length;
+        )
+        .sort(sortByStoreOrder);
 
-      return `<a class="homepage-category-tile" href="category.html?id=${encodeURIComponent(mainCategory.id)}">
-        <span class="homepage-category-number">${String(mainCategory.sort_order ?? '').padStart(2, '0')}</span>
+      const subcategoryCount = children.length;
+      const imageUrl = children.find((category) => String(category.showcase_image_url || '').trim())?.showcase_image_url || '';
+      const imageStyle = imageUrl
+        ? `style="--category-image: url('${escapeHtml(imageUrl).replace(/'/g, '%27')}')"`
+        : '';
+
+      return `<a class="homepage-category-tile homepage-category-tile-${index + 1}" href="category.html?id=${encodeURIComponent(mainCategory.id)}" ${imageStyle}>
+        <span class="homepage-category-number">${String(mainCategory.sort_order ?? index + 1).padStart(2, '0')}</span>
         <span class="homepage-category-copy">
           <span class="eyebrow">Collection</span>
           <strong>${escapeHtml(mainCategory.name)}</strong>
-          <small>${subcategoryCount} ${subcategoryCount === 1 ? 'collection' : 'collections'}</small>
+          <small>Explore ${subcategoryCount} ${subcategoryCount === 1 ? 'collection' : 'collections'}</small>
         </span>
         <span class="homepage-category-arrow" aria-hidden="true">↗</span>
       </a>`;
