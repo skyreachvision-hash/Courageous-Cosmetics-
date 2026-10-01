@@ -2869,13 +2869,10 @@ body {
 
 
 /* Horizontal product rails for New Arrivals and Promotions */
-#new-arrivals .product-grid,
-#promotions .product-grid {
+.product-rail {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(260px, 30vw);
-  grid-template-columns: none;
-  grid-template-rows: 1fr;
   gap: clamp(1rem, 2.5vw, 2rem);
   overflow-x: auto;
   overflow-y: hidden;
@@ -2885,29 +2882,25 @@ body {
   padding: 0 0 1rem;
 }
 
-#new-arrivals .product-card,
-#promotions .product-card {
+.product-rail .product-card {
   min-width: 0;
   scroll-snap-align: start;
   margin-top: 0 !important;
 }
 
-#new-arrivals .product-image,
-#promotions .product-image {
+.product-rail .product-image {
   width: 100%;
 }
 
 @media (max-width: 700px) {
-  #new-arrivals .product-grid,
-  #promotions .product-grid {
+  .product-rail {
     grid-auto-columns: minmax(235px, 72vw);
     gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  #new-arrivals .product-grid,
-  #promotions .product-grid {
+  .product-rail {
     grid-auto-columns: minmax(220px, 82vw);
   }
 }
