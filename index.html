@@ -95,6 +95,65 @@
   .cc-v2 .cat-head,.cc-v2 .category-products-head{padding:12px 14px}
 }
 
+
+/* Modern title cards */
+.cc-v2 .rail-head,.cc-v2 .cat-head,.cc-v2 .category-products-head{
+  position:relative;
+  border:1px solid rgba(23,19,17,.08);
+  background:rgba(255,255,255,.72);
+  border-radius:18px;
+  padding:13px 16px;
+  box-shadow:0 6px 20px rgba(23,19,17,.05);
+  backdrop-filter:blur(12px);
+}
+.cc-v2 .rail-head:before,.cc-v2 .cat-head:before,.cc-v2 .category-products-head:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:12px;
+  bottom:12px;
+  width:3px;
+  border-radius:4px;
+  background:var(--gold);
+}
+.cc-v2 .rail-head h2,.cc-v2 .cat-head h2,.cc-v2 .category-products-head h3{
+  letter-spacing:-.035em;
+}
+.cc-v2 .rail-head a,.cc-v2 .cat-head a,.cc-v2 .category-products-head a{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  border:1px solid rgba(23,19,17,.16);
+  border-radius:999px;
+  padding:8px 11px;
+  background:var(--white);
+  text-decoration:none;
+  transition:.2s;
+}
+.cc-v2 .rail-head a:hover,.cc-v2 .cat-head a:hover,.cc-v2 .category-products-head a:hover{
+  background:var(--black);
+  color:#fff;
+  border-color:var(--black);
+  transform:translateY(-1px);
+}
+.cc-v2 .promos .rail-head{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.15);
+}
+.cc-v2 .promos .rail-head a{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.28);
+  color:#fff;
+}
+.cc-v2 .promos .rail-head a:hover{
+  background:#fff;
+  color:var(--black);
+}
+@media(max-width:800px){
+  .cc-v2 .rail-head,.cc-v2 .cat-head,.cc-v2 .category-products-head{padding:11px 13px}
+  .cc-v2 .rail-head a,.cc-v2 .cat-head a,.cc-v2 .category-products-head a{padding:7px 9px;font-size:8px}
+}
+
 </style>>
 </head>
 <body class="cc-v2">
