@@ -3,112 +3,108 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Courageous Cosmetics | Make Your Mark</title>
-<meta name="description" content="Courageous Cosmetics — beauty made for your everyday ritual.">
+<title>Courageous Cosmetics | Beauty Made Bold</title>
+<meta name="description" content="Courageous Cosmetics — shop makeup, skincare, glow and fragrance.">
 <link rel="stylesheet" href="assets/css/styles.css">
+<style>
+/* Homepage experiment: shopping-first boutique layout */
+.cc-v2{--black:#15110f;--cream:#f5eee5;--gold:#b88a45;--white:#fffaf5;background:var(--white)}
+.cc-v2 .shop-header{height:76px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(21,17,15,.14);position:sticky;top:0;background:rgba(255,250,245,.96);backdrop-filter:blur(12px);z-index:20}
+.cc-v2 .logo{font:700 17px/1 var(--sans);letter-spacing:.12em}.cc-v2 .logo small{display:block;color:var(--gold);font-size:8px;letter-spacing:.34em;margin-top:5px}
+.cc-v2 .nav{display:flex;gap:32px;font-size:11px;font-weight:700}.cc-v2 .nav a:hover{color:var(--gold)}
+.cc-v2 .bag{font-weight:700;font-size:11px}.cc-v2 .menu{display:none}
+.cc-v2 .hero2{display:grid;grid-template-columns:42% 58%;min-height:650px;background:var(--cream)}
+.cc-v2 .hero2-copy{padding:8vw 7vw;display:flex;flex-direction:column;justify-content:center}
+.cc-v2 .eyebrow2{font-size:9px;font-weight:700;letter-spacing:.24em;margin:0 0 18px}
+.cc-v2 .hero2 h1{font:500 clamp(68px,8vw,116px)/.82 var(--serif);letter-spacing:-.06em;margin:0}.cc-v2 .hero2 h1 em{color:var(--gold)}
+.cc-v2 .hero2-copy p:not(.eyebrow2){font-size:13px;line-height:1.6;max-width:330px;margin:25px 0 30px}
+.cc-v2 .shop-btn{display:inline-flex;width:max-content;background:var(--black);color:#fff;padding:15px 22px;font-size:10px;font-weight:700;letter-spacing:.08em}
+.cc-v2 .hero2-photo{min-height:650px;background:linear-gradient(0deg,rgba(0,0,0,.16),transparent 45%),url("https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1600&q=90") center/cover}
+.cc-v2 .quick-cats{display:flex;overflow:auto;scrollbar-width:none;border-bottom:1px solid rgba(21,17,15,.14);background:#fff}.cc-v2 .quick-cats::-webkit-scrollbar,.cc-v2 .rail::-webkit-scrollbar{display:none}
+.cc-v2 .quick-cats a{flex:0 0 auto;padding:17px 29px;font-size:9px;font-weight:700;letter-spacing:.18em;border-right:1px solid rgba(21,17,15,.1)}.cc-v2 .quick-cats a:hover{background:var(--gold);color:#fff}
+.cc-v2 .rail-section{padding:78px 0 88px}.cc-v2 .rail-head{padding:0 5vw;display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}.cc-v2 .rail-head h2{font:500 clamp(43px,5vw,70px)/.9 var(--serif);letter-spacing:-.05em;margin:0}.cc-v2 .rail-head a{font-size:9px;font-weight:700;letter-spacing:.14em;border-bottom:1px solid var(--black);padding-bottom:5px}
+.cc-v2 .rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 5vw 12px;scrollbar-width:none}
+.cc-v2 .rail-card{flex:0 0 min(300px,30vw);scroll-snap-align:start}.cc-v2 .rail-img{aspect-ratio:4/5;background-size:cover;background-position:center;position:relative}.cc-v2 .rail-img:after{content:"VIEW";position:absolute;right:12px;bottom:12px;background:#fff;padding:8px 10px;font-size:8px;font-weight:700;letter-spacing:.15em;opacity:0;transition:.2s}.cc-v2 .rail-card:hover .rail-img:after{opacity:1}
+.cc-v2 .rail-meta{display:flex;justify-content:space-between;padding:13px 2px}.cc-v2 .rail-meta h3{font:500 20px var(--serif);margin:0 0 4px}.cc-v2 .rail-meta small{font-size:8px;letter-spacing:.14em;color:#796e67}.cc-v2 .rail-meta b{font-size:10px}
+.cc-v2 .new{background:#f0e4d8}.cc-v2 .promos{background:var(--black);color:#fff}.cc-v2 .promos .rail-head a{color:#fff;border-color:#fff}.cc-v2 .promos .rail-meta small{color:#bfb2a8}
+.cc-v2 .promo-card{flex-basis:min(390px,36vw)}.cc-v2 .promo-img{aspect-ratio:1.05/1;background-size:cover;background-position:center;position:relative}.cc-v2 .promo-label{position:absolute;left:16px;top:16px;background:var(--gold);color:#fff;padding:8px 11px;font-size:8px;font-weight:700;letter-spacing:.15em}
+.cc-v2 .categories{padding:82px 5vw;background:var(--cream)}.cc-v2 .cat-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}.cc-v2 .cat-head h2{font:500 clamp(43px,5vw,70px)/.9 var(--serif);letter-spacing:-.05em;margin:0}.cc-v2 .cat-head a{font-size:9px;font-weight:700;border-bottom:1px solid var(--black);padding-bottom:5px}
+.cc-v2 .cat-rail{display:flex;gap:12px;overflow:auto;scrollbar-width:none}.cc-v2 .cat{flex:0 0 min(330px,31vw);height:390px;position:relative;background-size:cover;background-position:center;display:flex;align-items:end;padding:22px;color:#fff;overflow:hidden}.cc-v2 .cat:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.72),transparent 60%)}.cc-v2 .cat>*{position:relative}.cc-v2 .cat h3{font:500 36px var(--serif);margin:4px 0 0}.cc-v2 .cat small{font-size:8px;letter-spacing:.18em}
+.cc-v2 .mini-banner{margin:0;background:var(--gold);color:#fff;padding:60px 5vw;display:flex;align-items:center;justify-content:space-between;gap:30px}.cc-v2 .mini-banner h2{font:500 clamp(38px,5vw,66px)/.9 var(--serif);margin:0;letter-spacing:-.05em}.cc-v2 .mini-banner a{background:var(--black);color:#fff;padding:15px 22px;font-size:10px;font-weight:700;white-space:nowrap}
+.cc-v2 .footer2{background:var(--black);color:#fff;padding:45px 5vw;display:flex;justify-content:space-between;gap:30px}.cc-v2 .footer2 p{margin:0;font-size:9px;color:#a99b91}.cc-v2 .footer2 nav{display:flex;gap:22px;font-size:9px;font-weight:700}.cc-v2 .footer2 a:hover{color:var(--gold)}
+@media(max-width:800px){
+.cc-v2 .shop-header{height:68px;padding:0 18px}.cc-v2 .nav{display:none}.cc-v2 .menu{display:block;border:0;background:none;font-size:18px}
+.cc-v2 .hero2{grid-template-columns:1fr}.cc-v2 .hero2-copy{padding:58px 20px 45px}.cc-v2 .hero2 h1{font-size:72px}.cc-v2 .hero2-photo{min-height:470px}
+.cc-v2 .quick-cats a{padding:15px 22px}
+.cc-v2 .rail-section{padding:62px 0 70px}.cc-v2 .rail-head{padding:0 20px;margin-bottom:22px}.cc-v2 .rail-head h2{font-size:47px}.cc-v2 .rail{padding:0 20px 10px;gap:10px}.cc-v2 .rail-card{flex-basis:76vw}.cc-v2 .promo-card{flex-basis:84vw}
+.cc-v2 .categories{padding:65px 20px}.cc-v2 .cat-head h2{font-size:47px}.cc-v2 .cat{flex-basis:78vw;height:350px}
+.cc-v2 .mini-banner{padding:48px 20px;display:block}.cc-v2 .mini-banner a{display:inline-flex;margin-top:25px}.cc-v2 .footer2{padding:38px 20px;display:block}.cc-v2 .footer2 nav{margin-top:22px}
+}
+</style>
 </head>
-<body class="cosmetics-home">
-<header class="site-header cc-header">
-  <div class="container header-inner">
-    <a class="brand cc-brand" href="index.html"><span>COURAGEOUS</span><small>COSMETICS</small></a>
-    <nav class="site-nav">
-      <a href="shop.html">Shop</a>
-      <a href="#categories">Categories</a>
-      <a href="account.html">Account</a>
-      <a class="cart-link" href="cart.html">Bag <span class="cart-count" data-cart-count>0</span></a>
-    </nav>
-    <button class="menu" aria-label="Menu">☰</button>
-  </div>
+<body class="cc-v2">
+<header class="shop-header">
+  <a class="logo" href="index.html">COURAGEOUS<small>COSMETICS</small></a>
+  <nav class="nav"><a href="shop.html">Shop</a><a href="#new">New</a><a href="#promotions">Promotions</a><a href="#categories">Categories</a></nav>
+  <a class="bag" href="cart.html">Bag <span class="cart-count" data-cart-count>0</span></a>
+  <button class="menu" aria-label="Menu">☰</button>
 </header>
 
 <main>
-<section class="cc-hero">
-  <div class="cc-hero-copy">
-    <p class="eyebrow">THE NEW EVERYDAY</p>
-    <h1>Make your<br><em>mark.</em></h1>
-    <p class="hero-text">Beauty with presence. Skin, colour and glow designed to become part of your signature.</p>
-    <a class="button button-dark" href="shop.html">Shop the collection <span>↗</span></a>
+<section class="hero2">
+  <div class="hero2-copy">
+    <p class="eyebrow2">COURAGEOUS COSMETICS</p>
+    <h1>Beauty<br>with a<br><em>point of view.</em></h1>
+    <p>Makeup, skincare and glow worth reaching for.</p>
+    <a class="shop-btn" href="shop.html">SHOP NOW&nbsp; ↗</a>
   </div>
-  <div class="cc-hero-art">
-    <div class="cc-hero-photo"></div>
-    <div class="cc-hero-circle"><span>CC</span><small>BEAUTY<br>WITH<br>ATTITUDE</small></div>
-    <div class="cc-hero-label">01 / COURAGEOUS COSMETICS</div>
+  <div class="hero2-photo"></div>
+</section>
+
+<nav class="quick-cats" aria-label="Shop categories">
+  <a href="shop.html">ALL BEAUTY</a><a href="shop.html">SKINCARE</a><a href="shop.html">MAKEUP</a><a href="shop.html">LIPS</a><a href="shop.html">GLOW</a><a href="shop.html">FRAGRANCE</a>
+</nav>
+
+<section class="rail-section new" id="new">
+  <div class="rail-head"><h2>New Arrivals</h2><a href="shop.html">VIEW ALL ↗</a></div>
+  <div class="rail">
+    <a class="rail-card" href="product.html"><div class="rail-img img-glow"></div><div class="rail-meta"><div><h3>Golden Hour</h3><small>GLOW</small></div><b>R420</b></div></a>
+    <a class="rail-card" href="product.html"><div class="rail-img img-lips"></div><div class="rail-meta"><div><h3>After Hours</h3><small>LIPS</small></div><b>R280</b></div></a>
+    <a class="rail-card" href="product.html"><div class="rail-img img-skin"></div><div class="rail-meta"><div><h3>Soft Reset</h3><small>SKINCARE</small></div><b>R360</b></div></a>
+    <a class="rail-card" href="product.html"><div class="rail-img img-glow"></div><div class="rail-meta"><div><h3>Night Shine</h3><small>MAKEUP</small></div><b>R310</b></div></a>
+    <a class="rail-card" href="product.html"><div class="rail-img img-lips"></div><div class="rail-meta"><div><h3>Velvet Kiss</h3><small>LIPS</small></div><b>R295</b></div></a>
   </div>
 </section>
 
-<section class="cc-intro">
-  <div class="container cc-intro-grid">
-    <p class="eyebrow">BEAUTY, YOUR WAY</p>
-    <h2>Everyday essentials.<br><em>Unexpected energy.</em></h2>
-    <p>From the first layer of skincare to the final touch of colour, build a routine that feels completely yours.</p>
+<section class="rail-section promos" id="promotions">
+  <div class="rail-head"><h2>Promotions</h2><a href="shop.html">SHOP DEALS ↗</a></div>
+  <div class="rail">
+    <a class="rail-card promo-card" href="product.html"><div class="promo-img img-skin"><span class="promo-label">SAVE 20%</span></div><div class="rail-meta"><div><h3>Skin Reset Set</h3><small>SKINCARE SET</small></div><b>R480</b></div></a>
+    <a class="rail-card promo-card" href="product.html"><div class="promo-img img-lips"><span class="promo-label">SAVE 15%</span></div><div class="rail-meta"><div><h3>Colour Duo</h3><small>MAKEUP DUO</small></div><b>R340</b></div></a>
+    <a class="rail-card promo-card" href="product.html"><div class="promo-img img-glow"><span class="promo-label">SAVE 25%</span></div><div class="rail-meta"><div><h3>Glow Edit</h3><small>GLOW SET</small></div><b>R520</b></div></a>
+    <a class="rail-card promo-card" href="product.html"><div class="promo-img img-skin"><span class="promo-label">SAVE 10%</span></div><div class="rail-meta"><div><h3>Daily Essentials</h3><small>EVERYDAY SET</small></div><b>R399</b></div></a>
   </div>
 </section>
 
-<section class="cc-arrivals section">
-  <div class="container">
-    <div class="section-heading">
-      <div><p class="eyebrow">JUST IN</p><h2>New Arrivals</h2></div>
-      <a class="button button-ghost" href="shop.html">Shop all ↗</a>
-    </div>
-    <div class="cc-product-stage">
-      <a class="cc-product-card cc-p1" href="product.html"><div class="cc-product-img img-glow"></div><span>01 / GLOW</span><h3>Golden Hour</h3><b>R420</b></a>
-      <a class="cc-product-card cc-p2" href="product.html"><div class="cc-product-img img-lips"></div><span>02 / COLOUR</span><h3>After Hours</h3><b>R280</b></a>
-      <a class="cc-product-card cc-p3" href="product.html"><div class="cc-product-img img-skin"></div><span>03 / SKIN</span><h3>Soft Reset</h3><b>R360</b></a>
-      <div class="cc-stage-word">NEW<br>FACES</div>
-    </div>
+<section class="categories" id="categories">
+  <div class="cat-head"><h2>Shop by Category</h2><a href="shop.html">SHOP ALL ↗</a></div>
+  <div class="cat-rail">
+    <a class="cat" href="shop.html" style="background-image:url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=90')"><div><small>01 / DAILY</small><h3>Skincare</h3></div></a>
+    <a class="cat" href="shop.html" style="background-image:url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=90')"><div><small>02 / COLOUR</small><h3>Makeup</h3></div></a>
+    <a class="cat" href="shop.html" style="background-image:url('https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=900&q=90')"><div><small>03 / LIGHT</small><h3>Glow</h3></div></a>
+    <a class="cat" href="shop.html" style="background-image:url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=90')"><div><small>04 / SIGNATURE</small><h3>Fragrance</h3></div></a>
   </div>
 </section>
 
-<section class="cc-promo">
-  <div class="cc-promo-image"></div>
-  <div class="cc-promo-copy">
-    <p class="eyebrow">THE ROUTINE EDIT</p>
-    <h2>Start with<br><em>skin.</em></h2>
-    <p>Prep. Hydrate. Reset. A simple ritual that makes everything that follows look better.</p>
-    <a class="button button-light" href="shop.html">Explore skincare ↗</a>
-  </div>
-</section>
-
-<section class="cc-categories section" id="categories">
-  <div class="container">
-    <div class="section-heading">
-      <div><p class="eyebrow">SHOP BY CATEGORY</p><h2>Find your ritual.</h2></div>
-      <a class="button button-ghost" href="shop.html">Shop all ↗</a>
-    </div>
-    <div class="cc-category-grid">
-      <a class="cc-category cc-cat-one" href="shop.html"><small>01</small><div><span>SKINCARE</span><h3>Skin<br>first.</h3></div></a>
-      <a class="cc-category cc-cat-two" href="shop.html"><small>02</small><div><span>MAKEUP</span><h3>Own<br>the room.</h3></div></a>
-      <a class="cc-category cc-cat-three" href="shop.html"><small>03</small><div><span>GLOW</span><h3>Catch<br>the light.</h3></div></a>
-      <a class="cc-category cc-cat-four" href="shop.html"><small>04</small><div><span>FRAGRANCE</span><h3>Leave<br>a trace.</h3></div></a>
-    </div>
-  </div>
-</section>
-
-<section class="cc-statement">
-  <p>BEAUTY IS NOT<br><em>A QUIET THING.</em></p>
-  <span>COURAGEOUS COSMETICS / 2026</span>
-</section>
-
-<section class="cc-newsletter">
-  <div class="container">
-    <p class="eyebrow">THE COURAGEOUS NOTE</p>
-    <h2>Come for the glow.<br><em>Stay for the attitude.</em></h2>
-    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='YOU’RE IN ✓'">
-      <input type="email" required placeholder="Your email address">
-      <button>JOIN ↗</button>
-    </form>
-  </div>
+<section class="mini-banner">
+  <h2>Your next favourite<br><em>is waiting.</em></h2>
+  <a href="shop.html">START SHOPPING&nbsp; ↗</a>
 </section>
 </main>
 
-<footer class="site-footer cc-footer">
-  <div class="container footer-grid">
-    <div><a class="brand cc-brand" href="index.html"><span>COURAGEOUS</span><small>COSMETICS</small></a><p class="footer-note">Everyday beauty. Your point of view.</p></div>
-    <div class="footer-column"><h3>Explore</h3><a href="shop.html">Shop</a><a href="#categories">Categories</a></div>
-    <div class="footer-column"><h3>Customer care</h3><a href="account.html">Account</a><a href="cart.html">Bag</a></div>
-    <div class="footer-column"><h3>Information</h3><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Contact</a></div>
-  </div>
-  <div class="container footer-bottom"><p>© 2026 Courageous Cosmetics. All rights reserved.</p></div>
+<footer class="footer2">
+  <p>© 2026 Courageous Cosmetics</p>
+  <nav><a href="shop.html">Shop</a><a href="account.html">Account</a><a href="cart.html">Bag</a></nav>
 </footer>
 <script src="assets/js/site.js"></script>
 </body>
