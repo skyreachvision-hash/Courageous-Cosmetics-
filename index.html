@@ -1,41 +1,116 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Courageous Cosmetics — Beauty, boldly.</title>
-<meta name="description" content="Courageous Cosmetics — modern beauty essentials made to be seen.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Courageous Cosmetics — Make an entrance.</title>
+<meta name="description" content="Courageous Cosmetics — beauty made for your main character moment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<style>
+:root{--black:#080808;--white:#fff;--gold:#d7ad57;--cream:#f2eee6;--red:#9d2630}
+body{background:var(--black);color:var(--white);overflow-x:hidden}
+.cc-home a{color:inherit}
+.cc-nav{position:absolute;top:32px;left:0;right:0;z-index:20;padding:20px 4vw;display:flex;align-items:center;justify-content:space-between;color:#fff}
+.cc-logo{font:700 18px/1 "Space Grotesk";letter-spacing:.08em}.cc-logo i{font-style:normal;color:var(--gold)}
+.cc-navlinks{display:flex;gap:32px;font-size:11px;text-transform:uppercase;letter-spacing:.12em}.cc-navlinks a{opacity:.8}.cc-navlinks a:hover{opacity:1;color:var(--gold)}
+.cc-actions{display:flex;gap:18px;font-size:11px;text-transform:uppercase;letter-spacing:.1em}.cc-actions b{color:var(--gold)}
+.cc-menu{display:none;background:none;border:0;color:#fff;font-size:22px}
+.cc-hero{min-height:100svh;position:relative;display:grid;grid-template-columns:1fr 1.05fr;overflow:hidden;background:#101010}
+.cc-hero-copy{position:relative;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5vw 9vh}
+.cc-kicker{font-size:10px;letter-spacing:.3em;color:var(--gold);font-weight:700;margin-bottom:22px}
+.cc-hero h1{font:700 clamp(70px,10vw,160px)/.78 "Space Grotesk";letter-spacing:-.085em;margin:0;max-width:750px;text-transform:uppercase}
+.cc-hero h1 span{display:block;margin-left:9vw;color:transparent;-webkit-text-stroke:1px #fff}
+.cc-hero h1 em{display:block;color:var(--gold);font-style:normal;margin-left:2vw}
+.cc-hero-copy>p:last-of-type{max-width:350px;font-size:13px;line-height:1.7;color:#b9b9b9;margin:34px 0 28px}
+.cc-cta{display:inline-flex;width:max-content;align-items:center;gap:30px;padding:15px 19px;background:var(--gold);color:#080808!important;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.cc-hero-art{position:relative;min-height:100svh;background:var(--cream);overflow:hidden}
+.cc-model{position:absolute;inset:8% 8% 0 2%;background:url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=90") center/cover;filter:saturate(.75)}
+.cc-model:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(242,238,230,.25),transparent 40%)}
+.cc-orbit{position:absolute;width:28vw;height:28vw;max-width:420px;max-height:420px;border:1px solid rgba(8,8,8,.35);border-radius:50%;top:15%;left:-9%;z-index:3}
+.cc-orbit:before{content:"CC";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:700 12vw/.8 "Space Grotesk";color:transparent;-webkit-text-stroke:1px #080808}
+.cc-sticker{position:absolute;z-index:5;right:5%;bottom:9%;width:105px;height:105px;background:var(--black);color:#fff;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:8px;letter-spacing:.16em;line-height:1.5;transform:rotate(12deg)}
+.cc-sticker strong{color:var(--gold);font-size:22px;display:block}
+.cc-sideword{position:absolute;right:1%;top:38%;writing-mode:vertical-rl;color:#111;font:700 10px "Space Grotesk";letter-spacing:.25em}
+.cc-marquee{background:var(--gold);color:#080808;overflow:hidden;white-space:nowrap;padding:12px 0;font:700 12px "Space Grotesk";letter-spacing:.14em}
+.cc-marquee div{width:max-content;animation:ccmove 24s linear infinite}@keyframes ccmove{to{transform:translateX(-40%)}}
+.cc-categories{background:var(--cream);color:#080808;padding:9vw 5vw}
+.cc-cat-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:55px}.cc-cat-head h2{font:700 clamp(48px,8vw,115px)/.78 "Space Grotesk";letter-spacing:-.08em;margin:0;text-transform:uppercase}.cc-cat-head h2 span{color:var(--gold)}
+.cc-cat-head p{font-size:10px;letter-spacing:.18em;max-width:180px;line-height:1.6;text-align:right}
+.cc-cat-grid{display:grid;grid-template-columns:1.15fr .7fr .95fr;gap:14px;align-items:stretch}
+.cc-cat{position:relative;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;padding:25px;background:#111;color:#fff}
+.cc-cat:nth-child(2){margin-top:80px;min-height:440px;background:#d7ad57;color:#080808}
+.cc-cat:nth-child(3){margin-top:-40px;min-height:580px}
+.cc-cat:before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s}
+.cc-cat:hover:before{transform:scale(1.06)}
+.cc-cat:nth-child(1):before{background-image:linear-gradient(0deg,rgba(0,0,0,.75),transparent 60%),url("https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=90")}
+.cc-cat:nth-child(2):before{background-image:linear-gradient(0deg,rgba(215,173,87,.82),rgba(215,173,87,.1)),url("https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=90");opacity:.65}
+.cc-cat:nth-child(3):before{background-image:linear-gradient(0deg,rgba(0,0,0,.72),transparent 60%),url("https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=90")}
+.cc-cat>*{position:relative;z-index:2}.cc-cat-num{position:absolute;top:22px;right:22px;font-size:9px;letter-spacing:.2em}.cc-cat h3{font:600 clamp(30px,4vw,60px)/.85 "Space Grotesk";letter-spacing:-.06em;text-transform:uppercase;margin:0}.cc-cat small{display:block;font-size:9px;letter-spacing:.2em;margin-bottom:12px}
+.cc-products{background:#fff;color:#080808;padding:9vw 5vw;position:relative}
+.cc-products:before{content:"SHOP";position:absolute;right:3vw;top:3vw;font:700 13vw/.8 "Space Grotesk";letter-spacing:-.09em;color:#f0ede7}
+.cc-product-head{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;margin-bottom:45px}.cc-product-head h2{font:700 clamp(45px,7vw,100px)/.8 "Space Grotesk";letter-spacing:-.08em;margin:0}.cc-product-head a{border-bottom:1px solid #080808;padding-bottom:6px;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.cc-product-row{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cc-product{display:block}.cc-product:nth-child(2){margin-top:55px}.cc-product:nth-child(4){margin-top:25px}.cc-pic{aspect-ratio:3/4;overflow:hidden;background:#eee}.cc-pic img{width:100%;height:100%;object-fit:cover;transition:.6s}.cc-product:hover img{transform:scale(1.045)}.cc-product label{display:block;font-size:8px;letter-spacing:.17em;margin:14px 0 6px;color:#777}.cc-product h3{font:600 19px "Space Grotesk";margin:0}.cc-product p{font-size:10px;margin:5px 0;color:#777}
+.cc-manifesto{background:var(--gold);color:#080808;min-height:75vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 5vw;position:relative;overflow:hidden}.cc-manifesto:before,.cc-manifesto:after{content:"";position:absolute;border:1px solid rgba(8,8,8,.3);border-radius:50%}.cc-manifesto:before{width:60vw;height:60vw}.cc-manifesto:after{width:35vw;height:35vw}.cc-manifesto-inner{position:relative;z-index:2}.cc-manifesto h2{font:700 clamp(52px,9vw,135px)/.78 "Space Grotesk";letter-spacing:-.09em;text-transform:uppercase;margin:0}.cc-manifesto h2 span{display:block;color:transparent;-webkit-text-stroke:1px #080808}.cc-manifesto p{font-size:10px;letter-spacing:.28em;margin-top:30px}
+.cc-final{background:#080808;padding:8vw 5vw;display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center}.cc-final h2{font:700 clamp(48px,7vw,95px)/.8 "Space Grotesk";letter-spacing:-.08em;text-transform:uppercase;margin:0}.cc-final h2 span{color:var(--gold)}.cc-final p{font-size:13px;color:#aaa;line-height:1.8;max-width:430px}.cc-email{display:flex;border-bottom:1px solid #555;max-width:430px;margin-top:35px}.cc-email input{flex:1;background:none;border:0;outline:0;color:#fff;padding:15px 0;font-size:11px}.cc-email button{border:0;background:none;color:var(--gold);font-weight:700;font-size:10px;letter-spacing:.1em}
+.cc-footer{border-top:1px solid #252525;background:#080808;color:#777;padding:25px 5vw;display:flex;justify-content:space-between;font-size:9px;letter-spacing:.13em;text-transform:uppercase}.cc-footer a{margin-left:25px;color:#aaa}
+@media(max-width:800px){
+.cc-nav{top:20px;padding:16px 20px}.cc-navlinks{display:none}.cc-menu{display:block}.cc-hero{display:block;min-height:auto}.cc-hero-copy{min-height:92svh;padding:0 22px 55px;justify-content:flex-end}.cc-hero h1{font-size:19vw}.cc-hero h1 span{margin-left:14vw}.cc-hero h1 em{margin-left:5vw}.cc-hero-copy>p:last-of-type{font-size:12px;margin:25px 0}.cc-hero-art{height:82svh;min-height:0}.cc-model{inset:0}.cc-orbit{width:65vw;height:65vw;left:-24%;top:17%}.cc-orbit:before{font-size:28vw}.cc-sideword{display:none}.cc-sticker{width:85px;height:85px;right:7%;bottom:6%}.cc-cat-head{display:block}.cc-cat-head p{text-align:left;margin-top:25px}.cc-cat-grid{grid-template-columns:1fr}.cc-cat,.cc-cat:nth-child(2),.cc-cat:nth-child(3){margin:0;min-height:420px}.cc-products:before{font-size:28vw}.cc-product-row{grid-template-columns:1fr 1fr;gap:28px 10px}.cc-product:nth-child(2),.cc-product:nth-child(4){margin-top:0}.cc-product-head{align-items:flex-end}.cc-product-head a{font-size:8px}.cc-final{grid-template-columns:1fr;padding:75px 22px;gap:35px}.cc-footer{display:block;padding:25px 20px}.cc-footer a{margin-left:15px}
+}
+</style>
 </head>
 <body>
-<div class="announcement">FREE DELIVERY OVER R1,000 <span>•</span> NEW SEASON BEAUTY HAS ARRIVED</div>
-<header class="site-header">
-<a class="brand" href="index.html"><span>COURAGEOUS</span><small>COSMETICS</small></a>
-<nav><a href="shop.html">Shop</a><a href="#collections">Collections</a><a href="#story">Our world</a></nav>
-<div class="header-actions"><a href="account.html" aria-label="Account">◎</a><a href="cart.html" class="cart-link" aria-label="Cart">Bag <b data-cart-count>0</b></a><button class="menu" aria-label="Menu">☰</button></div>
+<div class="cc-home">
+<header class="cc-nav">
+<a class="cc-logo" href="index.html">COURAGEOUS<span> <i>CC</i></span></a>
+<nav class="cc-navlinks"><a href="shop.html">Shop</a><a href="#categories">Categories</a><a href="#manifesto">The attitude</a></nav>
+<div class="cc-actions"><a href="account.html">Account</a><a href="cart.html">Bag <b data-cart-count>0</b></a><button class="cc-menu" aria-label="Menu">☰</button></div>
 </header>
 <main>
-<section class="hero">
-<div class="hero-copy"><p class="eyebrow">BEAUTY WITHOUT APOLOGY</p><h1>Own your<br><em>glow.</em></h1><p class="hero-text">High-impact colour, skin-loving formulas and the confidence to wear beauty your way.</p><a class="button button-dark" href="shop.html">Shop the edit <span>↗</span></a></div>
-<div class="hero-art"><div class="hero-badge">CC<br><small>01</small></div><div class="hero-image"></div><div class="hero-caption"><span>THE NEW FACE</span><b>01 / 04</b></div></div>
+<section class="cc-hero">
+<div class="cc-hero-copy">
+<div class="cc-kicker">COURAGEOUS COSMETICS / 001</div>
+<h1>Make<span>an</span><em>entrance.</em></h1>
+<p>Colour with presence. Skin with attitude. Beauty that arrives before you do.</p>
+<a class="cc-cta" href="shop.html">Enter the collection <span>↗</span></a>
+</div>
+<div class="cc-hero-art"><div class="cc-model"></div><div class="cc-orbit"></div><div class="cc-sideword">BEAUTY WITHOUT PERMISSION</div><div class="cc-sticker"><div><strong>CC</strong>THE<br>NEW<br>DROP</div></div></div>
 </section>
-<section class="marquee"><div>SKIN • COLOUR • GLOW • RITUAL • SKIN • COLOUR • GLOW • RITUAL •</div></section>
-<section id="collections" class="section collections">
-<div class="section-intro"><p class="eyebrow">THE EDIT</p><h2>Beauty, in<br><em>chapters.</em></h2><a href="shop.html" class="text-link">View all products ↗</a></div>
-<div class="collection-grid">
-<a class="collection-card tall" href="shop.html"><div class="collection-img img-lips"></div><div><small>01 — COLOUR</small><h3>Statement lips</h3><span>Explore colour ↗</span></div></a>
-<a class="collection-card" href="shop.html"><div class="collection-img img-skin"></div><div><small>02 — SKIN</small><h3>Soft focus skin</h3><span>Explore skincare ↗</span></div></a>
-<a class="collection-card offset" href="shop.html"><div class="collection-img img-glow"></div><div><small>03 — GLOW</small><h3>Lit from within</h3><span>Explore glow ↗</span></div></a>
+<div class="cc-marquee"><div>COURAGEOUS BEAUTY — SKIN / COLOUR / GLOW / RITUAL — COURAGEOUS BEAUTY — SKIN / COLOUR / GLOW / RITUAL — </div></div>
+
+<section id="categories" class="cc-categories">
+<div class="cc-cat-head"><h2>Pick your<br><span>mood.</span></h2><p>THREE WAYS TO SHOW UP. ONE RULE: MAKE IT YOURS.</p></div>
+<div class="cc-cat-grid">
+<a class="cc-cat" href="shop.html"><span class="cc-cat-num">01</span><div><small>LIP / EYE / CHEEK</small><h3>Statement<br>colour</h3></div></a>
+<a class="cc-cat" href="shop.html"><span class="cc-cat-num">02</span><div><small>PREP / HYDRATE / RESET</small><h3>Skin<br>first</h3></div></a>
+<a class="cc-cat" href="shop.html"><span class="cc-cat-num">03</span><div><small>GLOW / SHINE / LIGHT</small><h3>Turn<br>heads</h3></div></a>
 </div>
 </section>
-<section class="feature">
-<div class="feature-visual"><div class="circle">C</div><div class="feature-product"></div></div>
-<div class="feature-copy"><p class="eyebrow">THE COURAGEOUS ROUTINE</p><h2>Five minutes.<br><em>Full impact.</em></h2><p>Everything you need for a polished face that still feels like you. Layer it. Sheer it. Make it yours.</p><ol><li><span>01</span> Prep with skin tint</li><li><span>02</span> Sculpt with cream colour</li><li><span>03</span> Tap on the glow</li></ol><a class="button button-light" href="shop.html">Build your routine <span>↗</span></a></div>
+
+<section class="cc-products">
+<div class="cc-product-head"><h2>New faces.</h2><a href="shop.html">View all beauty ↗</a></div>
+<div class="cc-product-row">
+<a class="cc-product" href="product.html"><div class="cc-pic"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=90" alt="Glow product"></div><label>01 / GLOW</label><h3>Golden Hour</h3><p>R420</p></a>
+<a class="cc-product" href="product.html"><div class="cc-pic"><img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=90" alt="Lip colour"></div><label>02 / COLOUR</label><h3>After Hours</h3><p>R280</p></a>
+<a class="cc-product" href="product.html"><div class="cc-pic"><img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=700&q=90" alt="Skin product"></div><label>03 / SKIN</label><h3>Soft Reset</h3><p>R360</p></a>
+<a class="cc-product" href="product.html"><div class="cc-pic"><img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=90" alt="Beauty routine"></div><label>04 / RITUAL</label><h3>Five Minute Face</h3><p>R520</p></a>
+</div>
 </section>
-<section id="story" class="statement"><p>FOR THE ONES WHO<br><em>TAKE UP SPACE.</em></p><span>— COURAGEOUS COSMETICS</span></section>
-<section class="newsletter"><div><p class="eyebrow">COME CLOSER</p><h2>Beauty notes,<br><em>not noise.</em></h2></div><form onsubmit="event.preventDefault();this.querySelector('button').textContent='You’re in ✓'"><input type="email" required placeholder="Your email address"><button type="submit">Join ↗</button></form></section>
+
+<section id="manifesto" class="cc-manifesto">
+<div class="cc-manifesto-inner"><h2>Wear the<br><span>attention.</span></h2><p>NO SHRINKING. NO SECOND-GUESSING. JUST BEAUTY.</p></div>
+</section>
+
+<section class="cc-final">
+<div><div class="cc-kicker">THE COURAGEOUS NOTE</div><h2>Come for<br>the <span>glow.</span></h2></div>
+<div><p>New launches, limited edits and beauty ideas worth stealing. No noise. Just the good stuff.</p><form class="cc-email" onsubmit="event.preventDefault();this.querySelector('button').textContent='YOU’RE IN ✓'"><input type="email" required placeholder="EMAIL ADDRESS"><button type="submit">JOIN ↗</button></form></div>
+</section>
 </main>
-<footer><div class="footer-brand">COURAGEOUS<br><em>COSMETICS</em></div><div><small>SHOP</small><a href="shop.html">All beauty</a><a href="shop.html">New in</a><a href="shop.html">Best sellers</a></div><div><small>HELP</small><a href="account.html">Account</a><a href="cart.html">Bag</a><a href="#story">Contact</a></div><p>© 2026 Courageous Cosmetics</p></footer>
+<footer class="cc-footer"><span>© 2026 Courageous Cosmetics</span><span><a href="shop.html">Shop</a><a href="account.html">Account</a><a href="cart.html">Bag</a></span></footer>
+</div>
 <script src="assets/js/site.js"></script>
-</body></html>
+</body>
+</html>
